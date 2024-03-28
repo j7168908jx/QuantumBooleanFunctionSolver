@@ -1,0 +1,9 @@
+numpy
+pandas>=2.0.0
+qiskit
+qiskit_aer
+qiskit_terra
+matplotlib
+seaborn
+loguru
+tqdm
