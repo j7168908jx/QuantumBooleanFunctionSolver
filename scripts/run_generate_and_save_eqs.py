@@ -12,6 +12,7 @@ from generate_eq import generate_simple_eqs
 cols = ["num_var", "num_sol", "seed", "sol", "eqs"]
 out_data = pd.DataFrame(columns=cols)
 filename = "../output/eqs.pkl"
+os.makedirs("../output", exist_ok=True)
 if os.path.exists(filename):
     out_data = pk.load(open(filename, "rb"))
 

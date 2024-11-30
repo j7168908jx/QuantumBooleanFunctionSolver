@@ -140,6 +140,7 @@ def compute_result_from_qc(n, seed: int, shots: int,
                            solutions=None,
                            eqs=None,
                            threshold=0.999,
+                           iterations=None,
                            dry_run=False
                            ):
     """Entrance wrapper. Warp and check parameters.
@@ -163,6 +164,8 @@ def compute_result_from_qc(n, seed: int, shots: int,
         threshold (float):
             threshold used in determine
             the number of iterations of Grover's algorithm
+        iterations (Optional[int]):
+            if set, will force using this value as the number of iterations.
         dry_run (bool):
             whether to really run the circuit or not
 
@@ -184,7 +187,7 @@ def compute_result_from_qc(n, seed: int, shots: int,
     st_exc = time.time()
     qc, iterations = grover_circuit(
         eqs=eqs, n=n, threshold=threshold,
-        level=level, shots=shots, split=split,
+        level=level, shots=shots, split=split, iterations=iterations,
         num_ancilla=use_ancilla, num_sols=num_sols, arrange=arrange
     )
     result = run_circuit(qc, shots, dry_run=dry_run)
